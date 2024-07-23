@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "client.js",
   "scripts": {
-    "start": "node script.js"
+    "start": "node script.js",
+    "local" : "node --env-file=.env.local script.js"
   },
   "keywords": [],
   "author": "",

@@ -43,7 +43,9 @@ async function setToRedis(cacheKey, value, expiration = 120000) {
         const data = JSON.stringify(value)
         const compressedData = await gzip(data)
         const prefixedData = PREFIX + compressedData.toString('base64')
-        const ins = await client.set(cacheKey, prefixedData, 'EX', expiration)
+        const ins = await client.set(cacheKey, prefixedData, {
+            EX: expiration
+        })
         return ins
     } catch (error) {
         console.log('🚀 ~ setToRedis ~ error:', error)

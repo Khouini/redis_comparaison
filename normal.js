@@ -14,7 +14,9 @@ async function getFromRedis(cacheKey) {
 async function setToRedis(cacheKey, value, expiration = 120000) {
     try {
         const data = JSON.stringify(value)
-        const ins = await client.set(cacheKey, data, 'EX', expiration)
+        const ins = await client.set(cacheKey, data, {
+            EX: expiration
+        })
         return ins
     } catch (error) {
         console.log('🚀 ~ setToRedis ~ error:', error)
