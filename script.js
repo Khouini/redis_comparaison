@@ -65,10 +65,11 @@ const timings = [];
     console.log('Comparison Table:');
     console.table(timings.map(t => ({
         Service: t.serviceName,
-        'Insert Time (s)': (t.insertTime / 1000).toFixed(2),
+        'Insert Time(total) (s)': (t.insertTime / 1000).toFixed(2),
         'Insert Redis Time (s)': (t.insertRedisTime / 1000).toFixed(2),
         'Insert Parse Time (s)': (t.insertParseTime / 1000).toFixed(2),
-        'Get Time (s)': (t.getTime / 1000).toFixed(2),
+        "" : "",
+        'Get Time(total) (s)': (t.getTime / 1000).toFixed(2),
         'Get Redis Time (s)': (t.getRedisTime / 1000).toFixed(2),
         'Get Parse Time (s)': (t.getParseTime / 1000).toFixed(2),
         'Data Length': t.dataLength
