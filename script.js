@@ -23,9 +23,10 @@ console.log(`Size of the object: ${objSizeMB.toFixed(2)} MB`);
 
 async function start(redisService, serviceName, data, timings) {
     const time = new Date().getTime();
-
+    // expiration 5 minutes
+    const expiration = 300;
     const insertStart = performance.now();
-    const insertResult = await redisService.setToRedis(`RS_${serviceName.toUpperCase()}_${time}`, data);
+    const insertResult = await redisService.setToRedis(`RS_${serviceName.toUpperCase()}_${time}`, data, expiration);
     const insertEnd = performance.now();
     const insertTime = insertEnd - insertStart;
 
@@ -74,4 +75,5 @@ const timings = [];
         'Get Parse Time (s)': (t.getParseTime / 1000).toFixed(2),
         'Data Length': t.dataLength
     })));
+    process.exit(0);
 })();
